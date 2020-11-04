@@ -4,7 +4,7 @@ theme_color:
 
 notice:
 
-favicon: /images/favicon.png
+favicon: /images/favicon.ico
 banner: /images/banner.png
 avatar: /images/PASS_rene.jpg
 # rss: /atom.xml
