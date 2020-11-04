@@ -63,9 +63,13 @@
         <% } %>
       </div>
     </div>
-    <a href="<%- url_for('/about') %>" class="mdui-list-item mdui-ripple">
+    <a href="<%- url_for('/me') %>" class="mdui-list-item mdui-ripple">
       <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
-      <div class="mdui-list-item-content"><%= __('about') %></div>
+      <div class="mdui-list-item-content"><%= __('Me') %></div>
+    </a>
+    <a href="<%- url_for('/portfolio') %>" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">folder</i>
+      <div class="mdui-list-item-content"><%= __('Portfolio') %></div>
     </a>
   </div>
 
