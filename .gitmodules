@@ -1,0 +1,3 @@
+[submodule "themes/default"]
+	path = themes/default
+	url = https://github.com/niemingzhao/niemingzhao.github.io.git
