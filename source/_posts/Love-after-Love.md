@@ -2,7 +2,6 @@
 uuid: f8a03a66-21df-403e-b1b0-55d814936929
 title: Love after Love
 date: 2020-11-03 10:05:38
-tags:
 excerpt: From Brain Pickings
 ---
 
