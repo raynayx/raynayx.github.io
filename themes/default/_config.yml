@@ -27,7 +27,7 @@ site_verification:
   google:
   baidu:
 analytics:
-  google_site_id:
+  google_site_id: 298178531
 
 pages:
 - name: test1 
@@ -46,10 +46,10 @@ gallery:
   fancybox_js: https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js
   jquery_js: https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
   lazyload_js: https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js
-busuanzi:
-  site: false
-  page: false
-  busuanzi_js: http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+# busuanzi:
+#   site: false
+#   page: false
+#   busuanzi_js: http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 qrcode:
   caption: send to phone
   use: online
