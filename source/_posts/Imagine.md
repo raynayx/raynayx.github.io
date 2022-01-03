@@ -2,7 +2,7 @@
 uuid: 039c8b72-d94d-5329-980d-c0c6ccbdfb50
 title: Imagine
 date: 2018-03-06 10:31:54
-excerpt: One of my poems
+excerpt: I imagine an evening 
 category: Reflections of a Lost Sojourner
 ---
 *I imagine*
