@@ -45,6 +45,7 @@ using namespace std;
 int main()
 {
     cout << "Test number  2";
+    return 0;
 }
 ```
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
