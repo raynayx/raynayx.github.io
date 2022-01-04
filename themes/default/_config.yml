@@ -13,8 +13,6 @@ email:
 sns:
   twitter: https://twitter.com/RaynayX
   facebook:
-  google_plus:
-  instagram:
   github: https://github.com/raynayx/ 
   linkedin:
 
@@ -27,7 +25,7 @@ site_verification:
   google:
   baidu:
 analytics:
-  google_site_id: 298178531
+  google_site_id: G-1CPPFE4TBH
 
 pages:
 - name: test1 
