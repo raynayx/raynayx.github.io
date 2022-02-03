@@ -20,21 +20,21 @@ The default compilers are: ```arm-none-eabi-gcc```,```arm-none-eabi-g++```. Ther
 In order to make use of them, we need to have them installed on our system. Here is one way that can be done on Fedora(35) as tested.
 
 # The How
-In order to install the gcc toolchain for ARM on Fedora(35),
+In order to install the GCC toolchain for ARM on Fedora(35),
 - Go to [developer.arm.com](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads#) to fetch the latest compiler set which comes as a compressed file.
 - Remove any vestiges of previous installs by running:
     ```bash
     $ sudo dnf remove binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi
     ```
-- If the feedback is ```No packages marked for removal```, that's fine as the are no previous installations on the sysem.
-- The run the following commands:
+- If the feedback is ```No packages marked for removal```, that's fine as there are no previous installations on the sysem.
+- Then run the following commands:
     ```bash
     $ mkdir ~/opt   #create opt in $HOME
     $ cd ~/opt      #change into opt
     $ tar -xvf *.bz2    #uncompress the file
     $ chmod -R -w gcc-arm-none-eabi-* #
     ```
-- Add the path to the ```.bashrc``` to make the toolchain available system wide:
+- Add the path to the ```.bashrc``` file to make the toolchain available system wide:
     ```
     export PATH=$PATH:~/opt/gcc-arm-none-eabi-*/bin/
     ```
