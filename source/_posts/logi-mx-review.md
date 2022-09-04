@@ -67,7 +67,7 @@ I reckon this was a great investment too.
 After combing the web a little while attempting to find software to control the Anywhere 3 on Linux, I came across [Piper](https://github.com/libratbag/piper). Piper helps tweak the functions of the buttons on the mouse. That's all it does however. And it doesn't handle keyboards **as far as I know**. Enter Solaar!
 
 It is a wonder that it took me 1 year and 5 months to come across Solaar.
-Solaar kinda puts to bed all my complaints about Logitech and their seemingly blatant disregard for their Linux-user customer base.
+Solaar kinda puts to bed all my complaints about Logitech and their seeming blatant disregard for their Linux-user customer base.
 Solaar allows you to tweak the settings of most Logitech Keyboards and Mice. You can check them out [here](https://pwr-solaar.github.io/Solaar/) if you need  a tool like that. 
 
 The following screenshot shows the Solaar interface while I was tweaking the Keys Mini's settings.
