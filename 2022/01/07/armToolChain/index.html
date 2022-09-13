@@ -20,7 +20,7 @@
 <meta property="og:description" content="The NeedMost personal computers these days use CPUs of the x86_64 architecture. In order to build software for them, one needs tools that build binaries compatible with said architecture. A typical fl">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-07T07:35:37.000Z">
-<meta property="article:modified_time" content="2022-09-04T03:54:08.017Z">
+<meta property="article:modified_time" content="2022-09-13T16:12:19.582Z">
 <meta property="article:author" content="rene Xoese">
 <meta property="article:tag" content="rene">
 <meta property="article:tag" content="Xoese">
@@ -183,7 +183,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-16.png" style="max-height: 240px;">
+      <img src="/images/random/material-4.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Installing Arm Embedded GCC on Fedora 35</div>
@@ -239,19 +239,35 @@
 <h1 id="Arm-Embedded-GCC-Toolchain"><a href="#Arm-Embedded-GCC-Toolchain" class="headerlink" title="Arm Embedded GCC Toolchain"></a>Arm Embedded GCC Toolchain</h1><p>The Embedded GCC Toolchain is made up of compilers,linkers,debuggers and some other utilities that make the work of an embedded software developer simpler.<br>The default compilers are: <code>arm-none-eabi-gcc</code>,<code>arm-none-eabi-g++</code>. There is also a linker –<code>arm-none-eabi-ld</code> and the venerable <code>gdb</code> debugger in its tasteful ARM flavour as <code>arm-none-eabi-gdb</code>.<br>In order to make use of them, we need to have them installed on our system. Here is one way that can be done on Fedora(35) as tested.</p>
 <h1 id="The-How"><a href="#The-How" class="headerlink" title="The How"></a>The How</h1><p>In order to install the GCC toolchain for ARM on Fedora(35),</p>
 <ul>
-<li>Go to <a target="_blank" rel="noopener" href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads#">developer.arm.com</a> to fetch the latest compiler set which comes as a compressed file.</li>
-<li>Remove any vestiges of previous installs by running:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf remove binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi</span><br></pre></td></tr></table></figure></li>
-<li>If the feedback is <code>No packages marked for removal</code>, that’s fine as there are no previous installations on the sysem.</li>
-<li>Then run the following commands:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/opt   <span class="comment">#create opt in $HOME</span></span><br><span class="line">$ <span class="built_in">cd</span> ~/opt      <span class="comment">#change into opt</span></span><br><span class="line">$ tar -xvf *.bz2    <span class="comment">#uncompress the file</span></span><br><span class="line">$ chmod -R -w gcc-arm-none-eabi-* <span class="comment">#</span></span><br></pre></td></tr></table></figure></li>
-<li>Add the path to the <code>.bashrc</code> file to make the toolchain available system wide:  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;$PATH:~&#x2F;opt&#x2F;gcc-arm-none-eabi-*&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li>
-<li>Source the <code>.bashrc</code> file thus:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></li>
-<li>If <code>libncurses.so.5</code> library is not present on the Fedora system, run:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf install ncurses-compat-libs</span><br></pre></td></tr></table></figure>
+<li><p>Go to <a target="_blank" rel="noopener" href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads#">developer.arm.com</a> to fetch the latest compiler set which comes as a compressed file.</p>
+</li>
+<li><p>Remove any vestiges of previous installs by running:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf remove binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi</span><br></pre></td></tr></table></figure></li>
+<li><p>If the feedback is <code>No packages marked for removal</code>, that’s fine as there are no previous installations on the sysem.</p>
+</li>
+<li><p>Then run the following commands:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/opt   <span class="comment">#create opt in $HOME</span></span><br><span class="line">$ <span class="built_in">cd</span> ~/opt      <span class="comment">#change into opt</span></span><br><span class="line">$ tar -xvf *.bz2    <span class="comment">#uncompress the file</span></span><br><span class="line">$ chmod -R -w gcc-arm-none-eabi-* <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+  <!-- The command on line 3 extracts the compressed file. Make sure the file name in the command matches the file name of the file you downloaded. It may end in `.bz2` as in the example or others like `.tar.xz` or `.tar`. -->
+</li>
+<li><p>Add the path to the <code>.bashrc</code> file to make the toolchain available system wide:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;$PATH:~&#x2F;opt&#x2F;gcc-arm-none-eabi-*&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li>
+<li><p>Source the <code>.bashrc</code> file thus:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></li>
+<li><p>If <code>libncurses.so.5</code> library is not present on the Fedora system, run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf install ncurses-compat-libs</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h3 id="Confirm-installation"><a href="#Confirm-installation" class="headerlink" title="Confirm installation"></a>Confirm installation</h3><p>After installing, you can run the following in a new terminal window:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ arm-none-eabi-gcc --version</span><br></pre></td></tr></table></figure>
 <p>If you get a feedback stating:<br><code>arm-none-eabi-gcc (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)</code> with dates that match the version you downloaded, then you have correctly installed the ARM Toolchain.</p>
+<!-- It is possible the `arm-none-eabi-gdb` will complain about paths to a specific Python version(Python 3.8 in my case) depending on the version of the toolchain you grab. To fix this, add those paths to your `.bashrc` file thus:
+```sh
+export PYTHONPATH=/usr/lib64/python3.8
+export PYTHONHOME=/usr/lib64/
+
+``` -->
+
 <h1 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h1><p>After installation, the next step will be to use the shinny new toolchain. We will take a look at doing that pretty soon! </p>
 
       
