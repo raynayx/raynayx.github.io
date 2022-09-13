@@ -17,7 +17,7 @@ In my previous [article](https://raynayx.com/2022/01/07/armToolChain/), I showed
 Another required installation is the CMake build tool since the PICO-SDK depends on it.
 
 # CMake Installation
-If you don not have a C++ compiler installed, install one.
+If you do not have a C++ compiler installed, install one.
 The GNU C++ compiler can be installed as follows:
 
 ```
