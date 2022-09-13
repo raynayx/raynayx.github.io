@@ -3,7 +3,7 @@ uuid: 4d2861b4-9a60-c79b-d0b9-dcf1fc1680af
 title: Installing Arm Embedded GCC on Fedora 35
 category: Reveries of a Lost Craftsman
 date: 2022-01-07 07:35:37
-tags:
+# tags: RP2040
 ---
 
 # The Need
@@ -34,6 +34,8 @@ In order to install the GCC toolchain for ARM on Fedora(35),
     $ tar -xvf *.bz2    #uncompress the file
     $ chmod -R -w gcc-arm-none-eabi-* #
     ```
+    <!-- The command on line 3 extracts the compressed file. Make sure the file name in the command matches the file name of the file you downloaded. It may end in `.bz2` as in the example or others like `.tar.xz` or `.tar`. -->
+
 - Add the path to the ```.bashrc``` file to make the toolchain available system wide:
     ```
     export PATH=$PATH:~/opt/gcc-arm-none-eabi-*/bin/
@@ -55,6 +57,13 @@ $ arm-none-eabi-gcc --version
 If you get a feedback stating:
 ```arm-none-eabi-gcc (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)``` with dates that match the version you downloaded, then you have correctly installed the ARM Toolchain.
 
+
+<!-- It is possible the `arm-none-eabi-gdb` will complain about paths to a specific Python version(Python 3.8 in my case) depending on the version of the toolchain you grab. To fix this, add those paths to your `.bashrc` file thus:
+```sh
+export PYTHONPATH=/usr/lib64/python3.8
+export PYTHONHOME=/usr/lib64/
+
+``` -->
 
 # Next 
 After installation, the next step will be to use the shinny new toolchain. We will take a look at doing that pretty soon! 

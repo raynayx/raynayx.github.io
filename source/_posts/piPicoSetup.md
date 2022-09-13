@@ -3,6 +3,8 @@ uuid: e324b039-b44e-00ee-409c-194df560296e
 title: Setting up Raspberry Pi RP2040 development toolchain(Fedora)
 date: 2022-06-20 14:02:53
 category: Reveries of a Lost Craftsman
+tags:
+    # - RP2040
 ---
 
 # Raspberry Pi RP2040
@@ -15,6 +17,13 @@ In my previous [article](https://raynayx.com/2022/01/07/armToolChain/), I showed
 Another required installation is the CMake build tool since the PICO-SDK depends on it.
 
 # CMake Installation
+If you don not have a C++ compiler installed, install one.
+The GNU C++ compiler can be installed as follows:
+
+```
+sudo dnf install g++
+```
+
 To install CMake run:
 ```bash
 sudo dnf install cmake
@@ -27,6 +36,12 @@ Clone the SDK by running:
 git clone https://github.com/raspberrypi/pico-sdk.git ~/opt/pico-sdk
  ```
 The SDK will be cloned into the `~/opt/pico-sdk` directory in this example.<br>
+
+There are a couple of submodules that need to be cloned into the SDK directory to help with USB and wireless communication for the boards that have it.
+Change directory into the `~/opt/pico-sdk` directory and run the following:
+```bash
+git submodule update --init
+```
 
 Copy [pico_sdk_import.cmake](https://github.com/raspberrypi/pico-sdk/blob/master/external/pico_sdk_import.cmake) from the SDK into your project directory
 
@@ -96,4 +111,8 @@ Depending on the board you have, you could trigger this in different ways.
 For the Pi Pico board, press the `BOOTSEL` button while inserting the USB cable into your computer.
 Once the device shows up, copy the `uf2` file and paste it inside the mass storage device. If this is done successfully, the device will reset and start to run your program.
 This approach is the simplest way of getting code onto your device.
-# ELF
+
+# Conclusion
+At this point, we have gone from compiler to binary running on the RP2040. We have shown that the Pico SDK works by compiling code and loading it onto the Pi Pico.
+ However, there is another way of going about flashing code onto the microcontroller board. This approach is somewhat hassle free with regards to removing and inserting the USB cable of your board. It also allows us to debug our programs by stepping through our code.<br>
+In my next article, I will endeavour to show this approach too.
