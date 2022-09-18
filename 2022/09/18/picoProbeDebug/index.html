@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>picoProbeDebug | Xoese</title>
+
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta name="description" content="IntroductionIn my previous article, I described how to go about setting up your development environment for writing code for the RP2040 on Fedora(mostly 35 and 36). In the conclusion of that article,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="picoProbeDebug">
+<meta property="og:url" content="https://raynayx.com/2022/09/18/picoProbeDebug/index.html">
+<meta property="og:site_name" content="Xoese">
+<meta property="og:description" content="IntroductionIn my previous article, I described how to go about setting up your development environment for writing code for the RP2040 on Fedora(mostly 35 and 36). In the conclusion of that article,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-18T12:38:53.000Z">
+<meta property="article:modified_time" content="2022-09-18T12:42:44.752Z">
+<meta property="article:author" content="rene Xoese">
+<meta property="article:tag" content="rene">
+<meta property="article:tag" content="Xoese">
+<meta property="article:tag" content="raynayx">
+<meta property="article:tag" content="Novor">
+<meta property="article:tag" content="embedded systems">
+<meta property="article:tag" content="ghana">
+<meta property="article:tag" content="africa">
+<meta name="twitter:card" content="summary">
+
+  <meta name="keywords" content="">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Xoese">
+  <meta name="msapplication-starturl" content="https://raynayx.com/2022/09/18/picoProbeDebug/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Xoese">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.ico">
+
+  
+    <link rel="canonical" href="https://raynayx.com/2022/09/18/picoProbeDebug/">
+  
+
+  
+  
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','G-1CPPFE4TBH','auto');ga('send','pageview');
+</script>
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/custom.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-deep-purple 900 mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">Xoese</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'Search'}"><i class="mdui-icon material-icons">search</i></a>
+    
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="search"><input type="hidden" name="sitesearch" value="https://raynayx.com"></form>
+    <div class="search-result"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/PASS_rene.jpg" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">rene Xoese</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>catching fleeting thoughts</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">Home</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">Archive</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2022/09/">September 2022<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/07/">July 2022<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/06/">June 2022<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/01/">January 2022<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2020/11/">November 2020<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2018/08/">August 2018<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2018/03/">March 2018<span class="mdui-ripple sidebar_archives-count">2</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">Category</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/Reflections-of-a-Lost-Sojourner/">Reflections of a Lost Sojourner<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/Reveries-of-a-Lost-Craftsman/">Reveries of a Lost Craftsman<span class="mdui-ripple sidebar_archives-count">4</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">Tag</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">No Tags</a>
+        
+      </div>
+    </div>
+    <a href="/me" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">Me</div>
+    </a>
+    <a href="/portfolio" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">folder</i>
+      <div class="mdui-list-item-content">Portfolio</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">test1</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">test2</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">Links</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://morlantech.com" target="_blank" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme-accent mdui-ripple" style="justify-content: center;">morlantech</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-7.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">picoProbeDebug</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2022-09-18 / <i class="iconfont">&#xe601;</i> rene Xoese</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">send to phone</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="https://chart.googleapis.com/chart?cht=qr&chs=246x246&chl=https://raynayx.com/2022/09/18/picoProbeDebug/&chld=M|2">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=picoProbeDebug&url=https://raynayx.com/2022/09/18/picoProbeDebug/&pic=https://raynayx.com/images/favicon.ico&searchPic=false&style=simple" target="_blank" class="mdui-ripple">Share to Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=picoProbeDebug&url=https://raynayx.com/2022/09/18/picoProbeDebug/&via=rene Xoese" target="_blank" class="mdui-ripple">Share to Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://raynayx.com/2022/09/18/picoProbeDebug/" target="_blank" class="mdui-ripple">Share to Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://raynayx.com/2022/09/18/picoProbeDebug/" target="_blank" class="mdui-ripple">Share to Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://raynayx.com/2022/09/18/picoProbeDebug/&title=picoProbeDebug" target="_blank" class="mdui-ripple">Share to LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Xoese&title=picoProbeDebug&pics=https://raynayx.com/images/favicon.ico&url=https://raynayx.com/2022/09/18/picoProbeDebug/" target="_blank" class="mdui-ripple">Share to QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://raynayx.com/2022/09/18/picoProbeDebug/&text=picoProbeDebug" target="_blank" class="mdui-ripple">Share to Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>In my previous <a href="https://raynayx.com/2022/06/20/piPicoSetup/">article</a>, I described how to go about setting up your development environment for writing code for the RP2040 on Fedora(mostly 35 and 36).<br></p>
+<p>In the conclusion of that article, I mentioned that there are two main ways of getting your binary from the build computer onto the flash paired with the RP2040 MCU.<br>The first was to use the UF2 format. This approach is fairly straight forward. All it requires is for you to hold down the BOOTSEL button on the Pi Pico board while inserting the connected USB cable into your computer. This makes the board show up as a USB mass storage device. You then drag and drop the binary with <code>.uf2</code> extension into the device. This action causes the MCU to reset. After this, it starts to run your code.<br></p>
+<p>You will agree that this approach is not exactly friendly to multiple code flashes per programming session.</p>
+<h1 id="JTAG-SWD"><a href="#JTAG-SWD" class="headerlink" title="JTAG/SWD"></a>JTAG/SWD</h1><p>The other way of going about flashing onto RP2040 based boards is to use the universal <code>JTAG</code> or more precisely <code>SWD</code> interface.</p>
+<h2 id="JTAG"><a href="#JTAG" class="headerlink" title="JTAG"></a>JTAG</h2><p>The Joint Test Action Group(JTAG)</p>
+<h2 id="SWD"><a href="#SWD" class="headerlink" title="SWD"></a>SWD</h2><p>ARM Serial Wire Debug</p>
+<h1 id="Picoprobe"><a href="#Picoprobe" class="headerlink" title="Picoprobe"></a>Picoprobe</h1><p>The people at Raspberry have created a way of flashing and debugging an RP2040 using another RP2040 based board. The binary for doing this is called the <code>Picoprobe</code>.<br>The steps are described in their <a target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf">documentation</a>. I will attempt to summarize the whole process here.</p>
+<h2 id="OpenOCD"><a href="#OpenOCD" class="headerlink" title="OpenOCD"></a>OpenOCD</h2><p>For the Picoprobe to work, we need to setup a software called Open On-Chip Debugger(OpenOCD).</p>
+<p>The makers of the RP2040 have a fork of OpenOCD with modifications to make it work with Picoprobe with almost no modifications.</p>
+<ul>
+<li>To set it up, we need to install a few dependencies as follows:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install automake autoconf texinfo libtool libusb-devel libftdi-devel</span><br></pre></td></tr></table></figure></li>
+<li>We then need to clone the OpenOCD repository into a directory of our choosing. I have decided to clone mine into <code>~/opt/</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;raspberrypi&#x2F;openocd.git --branch rp2040 --depth&#x3D;1 --no-single-branch</span><br></pre></td></tr></table></figure></li>
+<li>Change directory into the newly created <code>openocd</code> directory and run the following commands one after the other:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;bootstrap</span><br><span class="line">$ .&#x2F;configure --enable-picoprobe</span><br><span class="line">$ make -j4</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+To confirm if the above step was successful, run the following command:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openocd -f interface&#x2F;picoprobe.cfg -f target&#x2F;rp2040.cfg -s tcl</span><br></pre></td></tr></table></figure>
+If you get the LIBUSB_ERROR_ACCESS do the following to fix it:</li>
+</ul>
+<p><strong>Fixing the LIBUSB_ERROR_ACCESS problem</strong></p>
+<ul>
+<li>Check if /etc/udev/rules.d/60-openocd.rules</li>
+<li>Create the file /etc/udev/rules.d/60-openocd.rules and paste the following text in there:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Raspberry Pi Picoprobe</span><br><span class="line">ATTRS&#123;idVendor&#125;&#x3D;&#x3D;&quot;2e8a&quot;, ATTRS&#123;idProduct&#125;&#x3D;&#x3D;&quot;0004&quot;, MODE&#x3D;&quot;660&quot;, GROUP&#x3D;&quot;plugdev&quot;, TAG+&#x3D;&quot;uaccess&quot;</span><br></pre></td></tr></table></figure></li>
+<li>Unplug the Picoprobe and plug it back in</li>
+</ul>
+<p>Run the following again:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openocd -f interface&#x2F;picoprobe.cfg -f target&#x2F;rp2040.cfg -s tcl</span><br></pre></td></tr></table></figure>
+<p>OpenOCD should run and display at least the version of your installation. It will return immediately with an error due to the absence of the Picoprobe device.</p>
+<h2 id="Flash-Picoprobe-via-UF2"><a href="#Flash-Picoprobe-via-UF2" class="headerlink" title="Flash Picoprobe via UF2"></a>Flash Picoprobe via UF2</h2><p>We need to load the Picoprobe firmware onto one of our RP2040 boards. This is the board that will act as the hardware debugger to help us program and debug other RP2040 boards.</p>
+<p>To do this, we need to clone the Picoprobe repository made available by the folks at Raspberry Pi.</p>
+<ul>
+<li><p>Clone the Picoprobe repository into any directory of your choice:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;raspberrypi&#x2F;picoprobe.git</span><br></pre></td></tr></table></figure></li>
+<li><p>Change into the picoprobe directory and create a <code>build</code> directory:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd picoprobe</span><br><span class="line">mkdir build</span><br></pre></td></tr></table></figure></li>
+<li><p>Open the <code>CMakeLists.txt</code> file in a text editor and add the following line to specify the path of the <code>pico-sdk</code> on your computer:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(PICO_SDK_PATH ~&#x2F;opt&#x2F;pico-sdk)</span><br></pre></td></tr></table></figure>
+<p>You are welcome to change the pico-sdk path to match the path on your computer.</p>
+</li>
+<li><p>Change into the <code>build</code> directory and run the following to build the picoprobe:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>The picoprobe binary should be built after a few moments.</p>
+<ul>
+<li>Find the <code>picoprobe.uf2</code>.</li>
+<li>If you had already plugged in the USB cable for your Pi Pico, remove it.</li>
+<li>Hold down the BOOTSEL button on the Pico board while inserting the USB.</li>
+<li>The board should show up as a mass storage device.</li>
+<li>Copy the <code>picoprobe.uf2</code> file on to the storage device. The board should reset and start running your code.</li>
+</ul>
+<p>The Pico board you used is now a hardware debugger ready to program and debug your other RP2040 based boards!</p>
+<h1 id="Picoprobe-to-Target-Device-wiring"><a href="#Picoprobe-to-Target-Device-wiring" class="headerlink" title="Picoprobe to Target Device wiring"></a>Picoprobe to Target Device wiring</h1><p>In order to program an RP2040 based device using the Picoprobe, both hardware have to wired in a certain way.<br>The following is a specific example in which the target(device to be programmed) is a Pi Pico board.</p>
+<table>
+<thead>
+<tr>
+<th>Picoprobe</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>GPIO 2</td>
+<td>SWCLK</td>
+</tr>
+<tr>
+<td>GPIO 3</td>
+<td>SWDIO</td>
+</tr>
+<tr>
+<td>GPIO 4/UART1 TX</td>
+<td>GP1/UART0 RX</td>
+</tr>
+<tr>
+<td>GPIO 5/UART1 RX</td>
+<td>GP0/UART0 TX</td>
+</tr>
+<tr>
+<td>VSYS</td>
+<td>VSYS</td>
+</tr>
+</tbody></table>
+<h2 id="Testing-the-connection"><a href="#Testing-the-connection" class="headerlink" title="Testing the connection"></a>Testing the connection</h2><p>In order to verify that the connection works as we desire, we need to connect the picoprobe’s USB to the host computer. We then lauch OpenOCD by running the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openocd -f interface&#x2F;picoprobe.cfg -f target&#x2F;rp2040.cfg -s tcl</span><br></pre></td></tr></table></figure>
+
+<p>If the connections are done in the right fashion, OpenOCD will present us with a series of texts. The last ones will be about starting gdb server and listening for gdb connections on some port. The default is port 3333.</p>
+<p><em>If you receive any error messages, verify your connections and try again.<br>If it persists, try using short wires between the two boards.</em></p>
+<h2 id="arm-none-eabi-gdb"><a href="#arm-none-eabi-gdb" class="headerlink" title="arm-none-eabi-gdb"></a>arm-none-eabi-gdb</h2><p>GDB is a software debugger. It allows us to send debug instructions to a device being debugged.<br>To test if our setup works correctly, we can start GDB and try to send commands to our target hardware.</p>
+<ul>
+<li>Launch another terminal window or tab and start the ARM flavour of GDB by running:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ arm-none-eabi-gdb</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>Once we are presented with the GDB prompt, we need to connect to the GDB server started by OpenOCD.<br>To do this, we type the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target extended-remote localhost:3333</span><br></pre></td></tr></table></figure>
+
+<p>This will connect with the OpenOCD GDB server. Now we can talk to our target board.</p>
+<p>To program the flash paired with the RP2040, change into the directory that has the binary of interest and run the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load test_pico.elf</span><br></pre></td></tr></table></figure>
+<p>After the programming is complete, your target can be debugged.<br>This can be done at the terminal by typing commands. However, Visual Studio Code(VS Code) has some extensions that allow clicking to achieve most of the things one will want in a debugging session. The actions common in step through debugging include </p>
+<p>Next, we will set up VS Code to do this.</p>
+<h1 id="Tying-it-all-together-in-VS-Code"><a href="#Tying-it-all-together-in-VS-Code" class="headerlink" title="Tying it all together in VS Code"></a>Tying it all together in VS Code</h1><p>Install VS Code. You can do this by grabbing the <code>.rpm</code> or by adding the VS Code repo and install it using <code>dnf</code>. The VS Code web pages show how to do this.</p>
+<p>Launch VS Code and click on the <code>Extensions</code> icon on the sidebar.<br>Search <code>Cortex-Debug</code> by <code>marus25</code> and install it.</p>
+<p>Still in the Extensions view, search for and install <code>C/C++</code> by Microsoft. This will enhance the experience of writing C/C++ programs since it will provide perks like <code>Intellisense</code> and function peeking among other things.</p>
+<p>Create a new directory and open it inside VS Code. It can be done as follows from the terminal:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir blink</span><br><span class="line">cd blink</span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Once the directory is open inside VS Code, create a sub-directory name <code>.vscode</code> in the root of the earlier directory.</p>
+</li>
+<li><p>Inside the <code>.vscode</code> directory, create a file named <code>launch.json</code>.</p>
+</li>
+<li><p>Copy and paste the following text into the <code>launch.json</code> file:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Pico Debug&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceRoot&#125;&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;executable&quot;</span>: <span class="string">&quot;$&#123;command:cmake.launchTargetPath&#125;&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;cortex-debug&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;servertype&quot;</span>: <span class="string">&quot;openocd&quot;</span>,</span><br><span class="line">            <span class="comment">// This may need to be arm-none-eabi-gdb depending on your system</span></span><br><span class="line">            <span class="attr">&quot;gdbPath&quot;</span> : <span class="string">&quot;arm-none-eabi-gdb&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;device&quot;</span>: <span class="string">&quot;RP2040&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;configFiles&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;interface/picoprobe.cfg&quot;</span>,</span><br><span class="line">                <span class="string">&quot;target/rp2040.cfg&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;svdFile&quot;</span>: <span class="string">&quot;$&#123;env:PICO_SDK_PATH&#125;/src/rp2040/hardware_regs/rp2040.svd&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;runToMain&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="comment">// Work around for stopping at main on restart</span></span><br><span class="line">            <span class="attr">&quot;postRestartCommands&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;break main&quot;</span>,</span><br><span class="line">                <span class="string">&quot;continue&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;searchDir&quot;</span>: [<span class="string">&quot;&lt;PATH TO TCL&gt;&quot;</span>],</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Create another file name <code>settings.json</code> inside <code>.vscode</code> and paste in the following text:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// These settings tweaks to the cmake plugin will ensure</span></span><br><span class="line">    <span class="comment">// that you debug using cortex-debug instead of trying to launch</span></span><br><span class="line">    <span class="comment">// a Pico binary on the host</span></span><br><span class="line">    <span class="attr">&quot;cmake.statusbar.advanced&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;debug&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;visibility&quot;</span>: <span class="string">&quot;hidden&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;launch&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;visibility&quot;</span>: <span class="string">&quot;hidden&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;build&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;visibility&quot;</span>: <span class="string">&quot;default&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;buildTarget&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;visibility&quot;</span>: <span class="string">&quot;hidden&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;cmake.buildBeforeRun&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;C_Cpp.default.configurationProvider&quot;</span>: <span class="string">&quot;ms-vscode.cmake-tools&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;cortex-debug.openocdPath&quot;</span>: <span class="string">&quot;&lt;PATH TO OPENOCD&gt;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The texts inside the <code>settings.json</code> and <code>launch.json</code> are from Shawn Hymmel’s article on the same topic. I find them very useful. That article can be found <a target="_blank" rel="noopener" href="https://www.digikey.be/en/maker/projects/raspberry-pi-pico-and-rp2040-cc-part-2-debugging-with-vs-code/470abc7efb07432b82c95f6f67f184c0">here</a>.</p>
+</li>
+</ul>
+<ul>
+<li>Enable printing over USB or UART inside the <code>CMakeLists.txt</code> file. The <code>0</code> turns off the particular function while the <code>1</code> turns it on. In this case, printing over USB is disabled while printing over UART is enabled.<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pico_enable_stdio_usb(<span class="variable">$&#123;MY_TARGET&#125;</span> <span class="number">0</span>)</span><br><span class="line">pico_enable_stdio_uart(<span class="variable">$&#123;MY_TARGET&#125;</span> <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Debug-with-VS-Code"><a href="#Debug-with-VS-Code" class="headerlink" title="Debug with VS Code"></a>Debug with VS Code</h2><p>In order to debug the code, click on the <code>Run and Debug</code> tab.<br>At the top of the sidebar that shows up, click on the <code>Run</code> icon.<br>This will compile the code and upload it to the target board. The target board will reset and run from startup. Right before execution hits <code>main</code> the Picoprobe debugger will halt execution and await instructions from you.<br>VS Code will provide you will a little toolbar which displays buttons like <code>Continue</code>,<code>Step Over</code>,<code>Step Into</code>, <code>Step Out</code> and others.<br>These buttons allow us to do the step through debugging we set out to do.</p>
+
+      
+      <blockquote>
+        
+        <strong>PermaLink: </strong><br><a href="https://raynayx.com/2022/09/18/picoProbeDebug/">https://raynayx.com/2022/09/18/picoProbeDebug/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/Reveries-of-a-Lost-Craftsman/">Reveries of a Lost Craftsman</a>
+      
+      
+    </footer>
+    
+  </article>
+  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2022/07/13/logi-mx-review/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Logi MX Anywhere 3 and MX Keys Mini(My Experience)'}">Next</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+      <a href="https://twitter.com/RaynayX" target="_blank" class="mdui-btn mdui-btn-icon mdui-text-color-theme-a100"><i class="mdui-icon iconfont">&#xe655;</i></a>
+    
+    
+    
+    
+    
+    
+    
+      <a href="https://github.com/raynayx/" target="_blank" class="mdui-btn mdui-btn-icon mdui-text-color-theme-a100"><i class="mdui-icon iconfont">&#xe7ab;</i></a>
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2022 rene Xoese<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+  
+<script src="/custom.js"></script>
+
+</body>
+</html>
