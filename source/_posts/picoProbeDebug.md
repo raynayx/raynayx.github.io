@@ -1,6 +1,6 @@
 ---
 uuid: 1a981ce5-61eb-f5f2-5d03-93c13f92d786
-title: picoProbeDebug
+title: Debugging RP2040s with Picoprobe
 date: 2022-09-18 12:38:53
 category: Reveries of a Lost Craftsman
 tags:
