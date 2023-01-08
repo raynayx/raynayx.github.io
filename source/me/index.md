@@ -13,4 +13,5 @@ I received a Bachelor's degree in Electrical and Electronic Engineering at the K
 
 When I am not trying to teach computers to do stuff, I like to play on words. You can check out a few of those [here](/categories/Reflections-of-a-Lost-Sojourner).
 Here's a formal description of what I have done over the last few years.
+I am available on <a rel="me" href="https://mastodon.social/@raynayx">Mastodon</a>.<br>
 You can see what I am up to at .......
