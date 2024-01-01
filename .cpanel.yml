@@ -1,4 +1,5 @@
 deployment:
   tasks:
     - source /home2/raynayx7/nodevenv/repositories/raynayxBlog/18/bin/activate && cd /home2/raynayx7/repositories/raynayxBlog
-    - npx hexo generate
+    - npx hexo generate -d
+    - git push origin
