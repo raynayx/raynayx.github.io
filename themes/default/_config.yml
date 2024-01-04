@@ -14,7 +14,7 @@ sns:
   twitter: https://twitter.com/RaynayX
   facebook:
   github: https://github.com/raynayx/ 
-  linkedin:
+  linkedin: https://www.linkedin.com/in/raynayx/
 
 open_graph:
   twitter:
@@ -25,13 +25,13 @@ site_verification:
   google:
   baidu:
 analytics:
-  google_site_id: G-1CPPFE4TBH
+  # google_site_id: G-1CPPFE4TBH
 
 pages:
-- name: test1 
-  link: /tagcloud
-- name: test2
-  link: /gallery
+# - name: test1 
+#   link: 
+- name: Gallery
+  link: gallery
 links:
 - name: morlantech
   link: https://morlantech.com
