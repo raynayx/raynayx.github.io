@@ -22,7 +22,7 @@ The mouse is a Bluetooth based mouse. The Bluetooth connection to my computer ha
 It is possible to adjust the behaviour of the scroll wheel which has an electromagnetic mechanism. You can switch between using the scroll wheel in a ratchet manner or a more controlled precise scroll. In the ratchet mode, you can breeze through several lines of code,pdf documentation with just one flick of your index finger. It can be satisfying.
 
 It comes with a USB C charging port in the front of the mouse. I personally think that is the right place to position the charging port.(Ahem, Apple I hope you're watching; who am I kidding? You don't care!).
-![MX Anywhere 3](mouse.jpg)
+![MX Anywhere 3](mouse.webp)
 
 Even though the Anywhere 3 looks small, I am comfortable with how it feels in my hands. I have not seen, talk less of used the Master 3 but I think it will be too big for my hand's comfort. The small and portable nature of the Anywhere 3 is a plus for me since I carry it around in my bag.
 One full charge takes about 70 days to fully discharge. When I got mine, I charged it to 100% on January 10,2021. The next time I thought about charging was on March 29,2021 only to find the battery was at 30%. How many days was that?
@@ -45,7 +45,7 @@ The wired DELL keyboard I was using was humongous and took a lot of space on my 
 I got my Keys Mini in the gray color to match the MX ANywhere 3. I got it in the American layout(ANSI) style. I think that is how QWERTY keyboards should be laid out.(Sorry to offend the folks in the UK. It's also weird that the UK layout is the ISO standard. What? )
 
 Another aesthetical master piece from Logitech, the MX Keys Mini is a sight for sore eyes.
-![MX Keys Mini](keyboard.jpg)
+![MX Keys Mini](keyboard.webp)
 
 But just to be looking at it is not why I got it, right?
 After typing on it for a few minutes on the first day, I thought it was a little too mini than my mental model of mini. At work, I think the chair height to table height ratio required me to raise the keyboard a little more than the non-adjustable feet will provide. I think it requires some getting used to.
