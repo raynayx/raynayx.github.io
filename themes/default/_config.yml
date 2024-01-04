@@ -28,10 +28,8 @@ analytics:
   # google_site_id: G-1CPPFE4TBH
 
 pages:
-# - name: test1 
-#   link: 
 - name: Gallery
-  link: gallery
+  link: /gallery
 links:
 - name: morlantech
   link: https://morlantech.com
