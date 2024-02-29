@@ -25,7 +25,7 @@ site_verification:
   google:
   baidu:
 analytics:
-  google_tag: G-HHBPZQEPH7
+  # google_tag: G-HHBPZQEPH7
 
 pages:
 - name: Gallery
