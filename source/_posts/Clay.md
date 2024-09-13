@@ -8,18 +8,18 @@ category: Reflections of a Lost Sojourner
 ---
 
 We are the finest silver
-Shinning through the dark cabinets
+Shining through the dark cabinets
 Wherein we're packed and neatly arranged
 Brought out to serve august guests in December
 
 We are the finest ceramics
 Neat, clean, dry and out of sight in choice cabinets
-Wherein we wait for occassions out of the ordinary
+Wherein we wait for occasions out of the ordinary
 Broken out to hold the most tasteful akpamu detsi for travelers from afar
 
 We are the awe-inspiring glass from Murano - Venice,
 Seal unbroken, still wrapped in present paper at the top of cabinets 
-Wherein we wait, for days of exteme joy or pain
+Wherein we wait, for days of extreme joy or pain
 To be brought out and given a taste of whatever drinks the occasions call for
 
 We are the nicest Ʋegba of clay - white, red and black
