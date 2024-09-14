@@ -3,7 +3,7 @@ uuid: 43226648-da1a-e36b-ce81-c2c066e6a2a7
 title: Finest Silver, Ceramics and Clay
 date: 2024-01-01 12:52:04
 tags:
-excerpt: We are the finest silver
+excerpt: We are the finest silver...
 category: Reflections of a Lost Sojourner
 ---
 
