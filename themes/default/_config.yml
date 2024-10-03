@@ -29,11 +29,12 @@ analytics:
   google_site_id: G-HHBPZQEPH7
 
 pages:
-- name: Gallery
-  link: /gallery
+# - name: Gallery
+#   link: /gallery
 links:
 - name: morlantech
   link: https://morlantech.com
+  
 since:
 footer_text:
 license:
