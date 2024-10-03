@@ -11,7 +11,7 @@ excerpt: Many a beauteous moment has
 Many a beauteous moment has attended my waking hours
 When the noon sun goes down and takes its scourge with it,
 I see the smiling moon pour secrets into the river
-That runs away back to the place from whence it came
+That runs away back to the place whence it came
 And I know it will come again
 
 So, let the azagunɔ rub his sticks over the Gana
