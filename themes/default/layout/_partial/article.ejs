@@ -129,13 +129,13 @@
     <% if (page.prev) { %>
       <a rel="prev" class="extend prev" href="<%- url_for(page.prev.path) %>">
         <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
-        <span class="mdui-p-x-3" mdui-tooltip="{content: '<%= page.prev.title %>'}"><%= __('prev') %></span>
+        <span class="mdui-p-x-3" mdui-tooltip="{content: '<%= page.prev.title %>'}"><%= __('next') %></span>
       </a>
     <% } %>
     <div class="spacer"></div>
     <% if (page.next) { %>
       <a rel="next" class="extend next" href="<%- url_for(page.next.path) %>">
-        <span class="mdui-p-x-3" mdui-tooltip="{content: '<%= page.next.title %>'}"><%= __('next') %></span>
+        <span class="mdui-p-x-3" mdui-tooltip="{content: '<%= page.next.title %>'}"><%= __('prev') %></span>
         <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
       </a>
     <% } %>
