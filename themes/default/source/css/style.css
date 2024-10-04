@@ -457,11 +457,11 @@ img.avatar-animation:hover {
 }
 
 #paginator .extend.prev {
-  right: 8px;
+  left: 6px;
 }
 
 #paginator .extend.next {
-  left: 8px;
+  right: 6px;
 }
 
 #paginator .spacer {
