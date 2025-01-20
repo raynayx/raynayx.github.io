@@ -5,6 +5,7 @@ date: 2025-01-20 16:59:39
 category: Reflections of a Lost Sojourner
 tags:
 thumbnail:
+excerpt: Let us stare into the abyss of knowledge
 ---
 
 Breathe
