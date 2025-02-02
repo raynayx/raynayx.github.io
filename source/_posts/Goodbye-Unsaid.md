@@ -20,7 +20,7 @@ And turned my sky grey.
 Which call continues to ache my heart.
 I tried to shed no tears --I tried to be strong.
 Looking back, I should have;  I was wrong.
-Sister poured hers out, as Ʋli falls.
+Sister poured hers out, as *__Ʋli__* falls.
 Till today, mine still lie up those falls.
 
 Where have you gone, friend?

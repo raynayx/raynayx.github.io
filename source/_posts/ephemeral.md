@@ -23,11 +23,11 @@ Someday, we may find a piece
 Watch
 The new leaf open its palm
 Like a child learning to accept a nut
-See the vinyebu burn until its embers die out
+See the *__vinyebu__* burn until its embers die out
 
 Sit
-Watch hundreds of bleyivi in the beach sand
-Dance to the war drums of the aʋadada
+Watch hundreds of *__bleyivi__* in the beach sand
+Dance to the war drums of the *__aʋadada__*
 Wielding their pincers like spears
 Someday,
 You and I will chase them and catch only one

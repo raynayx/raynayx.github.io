@@ -42,5 +42,3 @@ category: Reflections of a Lost Sojourner
 	So all I can do to help is imagine!
 	
 x.k
-
-![Humming](humming.jpg)

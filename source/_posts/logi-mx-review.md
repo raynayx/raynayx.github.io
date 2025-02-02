@@ -2,7 +2,6 @@
 uuid: 50776b8c-7732-3ad4-ea28-9be9b9d32a3d
 title: Logi MX Anywhere 3 and MX Keys Mini(My Experience)
 date: 2022-07-13 09:33:48
-category: Reveries of a Lost Craftsman
 ---
 
 # The Need

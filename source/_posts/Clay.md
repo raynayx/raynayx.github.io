@@ -15,14 +15,14 @@ Brought out to serve august guests in December
 We are the finest ceramics
 Neat, clean, dry and out of sight in choice cabinets
 Wherein we wait for occasions out of the ordinary
-Broken out to hold the most tasteful akpamu detsi for travelers from afar
+Broken out to hold the most tasteful *__akpamu detsi__* for travelers from afar
 
 We are the awe-inspiring glass from Murano - Venice,
 Seal unbroken, still wrapped in present paper at the top of cabinets 
 Wherein we wait, for days of extreme joy or pain
 To be brought out and given a taste of whatever drinks the occasions call for
 
-We are the nicest Ʋegba of clay - white, red and black
+We are the nicest *__Ʋegba__* of clay - white, red and black
 Our insides squeaky clean and our containers covered in forgotten dust
 Wherein we wait for special people on special days to see daylight
 To feast, to mourn, to jubilate, to wail whatever songs the occasions call for
