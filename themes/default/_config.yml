@@ -48,9 +48,9 @@ busuanzi:
   site: false
   page: false
   busuanzi_js: http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
-# qrcode:
-#   caption: send to phone
-  # use: online
+qrcode:
+  caption: send to phone
+  use: offline
 donate:
 search:
   placeholder: search 
