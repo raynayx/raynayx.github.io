@@ -7,11 +7,24 @@ excerpt: To turn any directory into a Dev Container directory,
 thumbnail:
 ---
 
+#### Table of Content
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+    - [Set up WSL2](#set-up-wsl2)
+    - [Install Docker in WSL2](#install-docker-inside-wsl2)
+    - [Set up USB Passthrough](#set-up-usb-passthrough)
+- [The Dockerfile](#the-dockerfile)
+    - [Build Docker Image](#build-docker-image)
+    - [Run Container](#run-image-to-get-a-container)
+- [Dev Container](#dev-container)
+    - [Open Project In Dev Container](#open-project-in-dev-container)
+- [Conclusion](#conclusion)
+
 # Introduction
 Onboarding a new member of your embedded team can be time intensive in terms of setting up the development environment. Sometimes, your setup works while that of your colleague doesn’t because they have some packages installed that are useful for some other project they may be involved in. Other times, you need to set up a system for continuous integration and development on a remote machine. For all of these, if only you could just set up a dedicated machine for the project in question, maybe your life will be a tad easier. 
 That’s where containers can be useful. Containers can be thought of as very lightweight virtual machines that have virtualized OS functionality as opposed to virtualized hardware as is the case with standard virtual machines. Employing containers allows us to set up consistent isolated development environments across the team or even  with clients or partners. 
 
-Docker is the most popular containerization platform out there. It runs on Windows(directly), Windows inside Windows Subsystem Linux(WSL2), macOS and Linux among others. In this article, my goal is to set up a Docker container  that can be used to develop firmware for the RP2040 MCUs from Raspberry Pi. You can then connect to this container inside VS Code,develop firmware and flash the firmware from inside the container.
+Docker is the most popular containerization platform out there. It runs on Windows(directly), Windows inside Windows Subsystem Linux(WSL2), macOS and Linux among others. In this article, my goal is to set up a Docker container  that can be used to develop firmware for the RP2040 MCUs from Raspberry Pi. You can then connect to this container inside VS Code, develop firmware and flash the firmware from inside the container.
 
 If you’re using a Linux based system, you can skip the following steps and go to installing docker on your Linux box.
 
@@ -19,13 +32,13 @@ If you’re using a Linux based system, you can skip the following steps and go 
 If you’re using Windows, you have two paths. You can install Docker directly on Windows and skip to the Dockerfile section –the direct path. Alternatively, you can set up WSL2 and then install Docker inside WSL2. But, why choose the straightforward approach when there’s a convoluted route? 
 I will show you how to get it done with WSL2 since that allows us to use relatively the same steps on Linux-based systems.
 
-## Set up WSL2
+### Set up WSL2
 Microsoft has a well documented process for setting this up. Kindly check it out, follow the steps and be back here to continue. Here you go: https://learn.microsoft.com/en-us/windows/wsl/install.
 
-## Install Docker inside WSL2
+### Install Docker inside WSL2
 Docker has a GUI version called Docker Desktop which has a fairly consistent interface across platforms. You can opt to install that or the CLI version Docker Engine. The set up process is shown here: https://docs.docker.com/engine/install/
 
-## Set up USB Passthrough
+### Set up USB Passthrough
 If you're following along in WSL2, you will need a tool that makes your USB devices available inside the WSL2 environment. Here's a good guide to get it working: https://learn.microsoft.com/en-us/windows/wsl/connect-usb. 
 
 If you prefer a GUI solution(like me), follow this link: https://gitlab.com/alelec/wsl-usb-gui#installation. Installing it is pretty straightforward and using it is super easy.
@@ -35,12 +48,12 @@ If you prefer a GUI solution(like me), follow this link: https://gitlab.com/alel
 The Dockerfile is a blueprint for the isolated environment you want to create. The Docker engine follows the instructions outlined in the Dockerfile and creates an image. You can then run the image with certain parameters to get your isolated development environment –the container.
 [This Dockerfile](https://github.com/raynayx/rpxContainer/blob/main/Dockerfile) creates an image which has the `pico-sdk`, the `arm-none-eabi` toolchain setup and the `JLink` tools for flashing the firmware to the Raspberry Pi series of MCUs. The image also has [`Invoke`](https://www.pyinvoke.org/)  for managing tasks like building,flashing and debugging the firmware.
 
-## Build Docker image
+### Build Docker image
 To build the image, do:
 ```bash
 docker buildx build -t namespace/image_name -f path_to_Dockerfile .
 ```
-## Run image to get a container
+### Run image to get a container
 You can then run the image to get a container this way:
 ```bash
 docker run -it --mount type=bind,src=project/directory/,dst=/home/rpx/dev --privileged -v /dev/bus/usb/:/dev/bus/usb namespace/image_name  /bin/bash
@@ -77,7 +90,7 @@ This is shown below:
     "runArgs": ["--privileged"]
 }
 ```
-## Open Project in Dev Container
+### Open Project in Dev Container
 In order to start developing in the Dev Container, open the project directory with the `devcontainer.json` file inside VS Code.
 The `Dev Container` extension will prompt you to rebuild the container, reload the window.
 Once the build is complete, you can develop inside VS Code as though the environment was totally local.
