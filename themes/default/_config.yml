@@ -1,6 +1,7 @@
 theme_color:
   primary: "deep-purple 900" 
   accent: pink 
+  dark-mode: true
 
 notice:
 
