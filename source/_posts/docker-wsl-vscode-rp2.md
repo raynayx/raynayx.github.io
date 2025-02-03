@@ -86,3 +86,6 @@ This is shown below:
 
 You can do visual debugging through the Cortex Debug extension.
 <video src="https://github.com/user-attachments/assets/1d022889-8f8c-42bd-8c4a-9c33c71aed86" controls="controls"></video>
+
+# Conclusion
+- Things you can do going forward
