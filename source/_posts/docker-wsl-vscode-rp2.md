@@ -3,8 +3,7 @@ uuid: ddfb9e7e-9f9c-7b98-0821-2a221cef42ea
 title: VS Code for Container-based Embedded Systems Development in WSL2 -- For RP2040
 date: 2025-02-03 08:38:06
 category: Reveries of a Lost Craftsman
-excerpt: 
-tags:
+excerpt: To turn any directory into a Dev Container directory into a Dev Container directory...
 thumbnail:
 ---
 
