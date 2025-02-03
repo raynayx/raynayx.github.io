@@ -7,7 +7,7 @@ excerpt: To turn any directory into a Dev Container directory,
 thumbnail:
 ---
 
-#### Table of Content
+<!-- ##### Table of Content
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
     - [Set up WSL2](#set-up-wsl2)
@@ -18,9 +18,9 @@ thumbnail:
     - [Run Container](#run-image-to-get-a-container)
 - [Dev Container](#dev-container)
     - [Open Project In Dev Container](#open-project-in-dev-container)
-- [Conclusion](#conclusion)
+- [Conclusion](#conclusion) -->
 
-# <a> Introduction </a>
+# Introduction
 Onboarding a new member of your embedded team can be time intensive in terms of setting up the development environment. Sometimes, your setup works while that of your colleague doesn’t because they have some packages installed that are useful for some other project they may be involved in. Other times, you need to set up a system for continuous integration and development on a remote machine. For all of these, if only you could just set up a dedicated machine for the project in question, maybe your life will be a tad easier. 
 That’s where containers can be useful. Containers can be thought of as very lightweight virtual machines that have virtualized OS functionality as opposed to virtualized hardware as is the case with standard virtual machines. Employing containers allows us to set up consistent isolated development environments across the team or even  with clients or partners. 
 
@@ -101,4 +101,6 @@ You can do visual debugging through the Cortex Debug extension.
 <video src="https://github.com/user-attachments/assets/1d022889-8f8c-42bd-8c4a-9c33c71aed86" controls="controls"></video>
 
 # Conclusion
-- Things you can do going forward
+By setting up your development environment, you get the productive VS Code environment and the isolation of a docker container.
+
+Going forward, you can set up things like linting in this isolated development environment.
