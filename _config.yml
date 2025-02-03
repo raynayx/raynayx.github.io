@@ -6,7 +6,7 @@
 title: Xoese
 subtitle: 'catching fleeting thoughts'
 description: 'keeping fleeting thoughts'
-keywords: [rene, Xoese,x.k, poetry, raynayx, Novor, embedded systems, ghana, africa, engineer, 
+keywords: [rene, Xoese,x.k, poetry, poem, raynayx, Novor, embedded systems, ghana, africa, engineer, 
 embedded systems, rene novor, xoese kwasi, IoT,embedded systems engineer] 
 author: rene Xoese
 language: en
@@ -59,11 +59,11 @@ prismjs:
   tab_replace: ''
 
 # Home page setting
-path: /archives 
+path: /archives/ 
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: '/categories/Reflections-of-a-Lost-Sojourner/'
+  path: ''
   per_page: 10
   order_by: -date
 
