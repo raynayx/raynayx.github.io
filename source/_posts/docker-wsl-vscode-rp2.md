@@ -3,7 +3,7 @@ uuid: ddfb9e7e-9f9c-7b98-0821-2a221cef42ea
 title: VS Code for Container-based Embedded Systems Development in WSL2 -- For RP2040
 date: 2025-02-03 08:38:06
 category: Reveries of a Lost Craftsman
-excerpt: To turn any directory into a Dev Container directory into a Dev Container directory...
+excerpt: To turn any directory into a Dev Container directory,
 thumbnail:
 ---
 
@@ -51,7 +51,7 @@ The `-v /dev/bus/usb/:dev/bus/usb` passes the USB devices available to the host 
 While there are lots of vim and emacs diehards out there, the vast majority of developers spend their time in VS Code. The extensibility of the editor makes it easy to bend to your will. The tools that allow for this are referred to as Extensions. The Dev Container extension from Microsoft is among the most useful. You can get it by installing it separately or by installing it as part of a pack of other extensions that allow for remote development.
 Dev Container allows VS Code to connect to a docker container as though it was a normal project directory opened inside VS Code. 
 
-To turn any directory into a Dev Container directory into a Dev Container directory, you have to create a `devcontainer.json` file inside a `.devcontainer` directory inside the project directory and configure it. In order to get this to work, you need to point the `devcontainer.json` file to the location of the Dockerfile you intend to use. You can also point it to a prebuilt remote image.
+To turn any directory into a Dev Container directory, you have to create a `devcontainer.json` file inside a `.devcontainer` directory inside the project directory and configure it. In order to get this to work, you need to point the `devcontainer.json` file to the location of the Dockerfile you intend to use. You can also point it to a prebuilt remote image.
 The other configurations include listing the extensions required or useful for the container environment.
 For flashing firmware, you will need to pass USB through to the container. This is shown in the  `-- privileged` and `/dev/bus/usb` flags passed in the json file.
 This is shown below:
