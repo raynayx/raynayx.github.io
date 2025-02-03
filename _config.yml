@@ -59,7 +59,8 @@ prismjs:
   tab_replace: ''
 
 # Home page setting
-path: /archives 
+path: /categories/Reflections-of-a-Lost-Sojourner/
+# /archives 
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
