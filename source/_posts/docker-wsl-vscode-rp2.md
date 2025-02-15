@@ -1,6 +1,6 @@
 ---
 uuid: ddfb9e7e-9f9c-7b98-0821-2a221cef42ea
-title: VS Code for Container-based Embedded Systems Development in WSL2 -- For RP2040
+title: Container-based Embedded Systems Development with VS Code in WSL2 -- for RP2040
 date: 2025-02-03 08:38:06
 category: Reveries of a Lost Craftsman
 excerpt: To turn any directory into a Dev Container directory,
@@ -24,7 +24,8 @@ thumbnail:
 Onboarding a new member of your embedded team can be time intensive in terms of setting up the development environment. Sometimes, your setup works while that of your colleague doesn’t because they have some packages installed that are useful for some other project they may be involved in. Other times, you need to set up a system for continuous integration and development on a remote machine. For all of these, if only you could just set up a dedicated machine for the project in question, maybe your life will be a tad easier. 
 That’s where containers can be useful. Containers can be thought of as very lightweight virtual machines that have virtualized OS functionality as opposed to virtualized hardware as is the case with standard virtual machines. Employing containers allows us to set up consistent isolated development environments across the team or even  with clients or partners. 
 
-Docker is the most popular containerization platform out there. It runs on Windows(directly), Windows inside Windows Subsystem Linux(WSL2), macOS and Linux among others. In this article, my goal is to set up a Docker container  that can be used to develop firmware for the RP2040 MCUs from Raspberry Pi. You can then connect to this container inside VS Code, develop firmware and flash the firmware from inside the container.
+Docker is the most popular containerization platform out there. It runs on Windows(directly), Windows inside Windows Subsystem on Linux(WSL2), macOS and Linux-based OSes among others.
+In this article, we will explore setting up a Docker container  that can be used to develop firmware for the RP2040 MCUs on WSL2. You can then connect to this container inside VS Code, develop firmware and flash the firmware from inside the container.
 
 If you’re using a Linux based system, you can skip the following steps and go to installing docker on your Linux box.
 
@@ -38,6 +39,10 @@ Microsoft has a well documented process for setting this up. Kindly check it out
 ### Install Docker inside WSL2
 Docker has a GUI version called Docker Desktop which has a fairly consistent interface across platforms. You can opt to install that or the CLI version Docker Engine. The set up process is shown here: https://docs.docker.com/engine/install/
 
+- Install Docker Engine for WSL2 Ubuntu https://docs.docker.com/engine/install/ubuntu/
+- Post installation steps https://docs.docker.com/engine/install/linux-postinstall/
+Make
+ 
 ### Set up USB Passthrough
 If you're following along in WSL2, you will need a tool that makes your USB devices available inside the WSL2 environment. Here's a good guide to get it working: https://learn.microsoft.com/en-us/windows/wsl/connect-usb. 
 
@@ -59,22 +64,14 @@ ENV TZ=Africa/Accra
 RUN dnf update -y
 
 # Install g++ and dependencies
-RUN dnf install -y \
-    g++ \
-    wget \
-    git  \
-    python3-pip\
-    python3-invoke \
-    cmake \
-    vim \
-    ninja-build \
-    xz &&\
+RUN dnf install -y g++ wget git
+    python3-pip python3-invoke
+    cmake
+    vim ninja-build xz &&\
     #
     # JLink dependencies 
     #
-    dnf install -y libXrandr \
-    libXfixes \
-    libXcursor \
+    dnf install -y libXrandr libXfixes libXcursor
     ncurses-compat-libs &&\
     dnf clean all
 
@@ -125,8 +122,6 @@ RUN cd ${MAIN_HOME}/opt/picotool/build &&\
     -DPICO_SDK_PATH=${MAIN_HOME}/opt/pico-sdk -DPICOTOOL_FLAT_INSTALL=1 .. 
 RUN cd ${MAIN_HOME}/opt/picotool/build &&\
     make install
-
-    
 
 ENV PICO_SDK_PATH=${MAIN_HOME}/opt/pico-sdk/
 ENV CMAKE_CXX_COMPILER=${MAIN_HOME}/opt/arm-none-eabi/bin/arm-none-eabi-g++
