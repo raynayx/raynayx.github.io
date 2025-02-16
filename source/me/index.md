@@ -2,7 +2,7 @@
 title: Me 
 date: 2020-11-03 08:35:24
 ---
-Rene X.K Novor is my name.
+Rene Xoese Kwasi x.k Novor is my name.
 Digitally, I am present as @raynayX (a phonetic spelling of my first name and the initial of my EƲE name).
 Here is a little about me.
 
